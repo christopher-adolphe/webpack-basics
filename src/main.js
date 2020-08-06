@@ -1,1 +1,1 @@
-alert('Webpack beyond the basics!');
+require('./main.css');
