@@ -15,7 +15,9 @@ module.exports = {
   },
   // The devServer property indicates webpack server from which directory to serve the files
   devServer: {
-    contentBase: 'dist'
+    contentBase: 'dist',
+    // The overlay property enables webpack server to output errors directly on the webpage it is serving
+    overlay: true
   },
   // The module property indicates webpack the set of rules to apply when processing other types of files and which loaders to use in order to process them
   module: {
@@ -24,13 +26,36 @@ module.exports = {
         // The test property indicates which file/files should be transformed
         test: /\.css$/,
         // The use property indicates which loader/loaders should be used to do the transforming
-        // Here the loaders will be applied in reverse order: The css-loader will lint the css file and then the style-loader will inject the stylesheet into the html file
+        // Here the loaders will be applied in reverse order: The css-loader will be applied then the style-loader
         use: [
+          // Indicates webpack to inject the style into the html file
           {
             loader: 'style-loader'
           },
+          // Indicates webpack how to lint css files
           {
             loader: 'css-loader'
+          }
+        ]
+      },
+      {
+        // Test to transform html files
+        test: /\.html$/,
+        use: [
+          // The file-loader indicates webpack the name of the html files and inject them in the dist directory
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].html'
+            }
+          },
+          // The extract-loader indicates webpack to extract html files and bundle them separately
+          {
+            loader: 'extract-loader'
+          },
+          // The html-loader indicates webpack how to lint html files
+          {
+            loader: 'html-loader'
           }
         ]
       }
