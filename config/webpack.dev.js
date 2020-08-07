@@ -23,7 +23,7 @@ module.exports = {
   module: {
     rules: [
       {
-        // The test property indicates which file/files should be transformed
+        // The test property takes a regular expression which indicates which type of file/files should be transformed
         test: /\.css$/,
         // The use property indicates which loader/loaders should be used to do the transforming
         // Here the loaders will be applied in reverse order: The css-loader will be applied then the style-loader
@@ -55,7 +55,31 @@ module.exports = {
           },
           // The html-loader indicates webpack how to lint html files
           {
-            loader: 'html-loader'
+            loader: 'html-loader',
+            // Passing the options to the html-loader to indicate webpack we want to target the 'src' attribute of all image tags
+            options: {
+              attributes: {
+                list: [
+                  {
+                    tag: 'img',
+                    attribute: 'src',
+                    type: 'src'
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(jpg|gif|png)$/,
+        use: [
+          {
+            // Using the file-loader to bundle images and passing it options to indicate webpack the target path and how to name the images with their respective file extensions
+            loader: 'file-loader',
+            options: {
+              name: 'assets/[name].[ext]'
+            }
           }
         ]
       }
