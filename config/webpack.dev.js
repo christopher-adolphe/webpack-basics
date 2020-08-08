@@ -23,6 +23,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ],
+        exclude: /node_modules/
+      },
+      {
         // The test property takes a regular expression which indicates which type of file/files should be transformed
         test: /\.css$/,
         // The use property indicates which loader/loaders should be used to do the transforming
