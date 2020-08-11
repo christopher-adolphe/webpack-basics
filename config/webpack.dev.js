@@ -1,10 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // The entry property indicates webpack which module webpack should use to begin building out its internal dependency graph
   entry: {
-    main: ['./src/main.js', 'webpack-hot-middleware/client']
+    main: ['./src/main.js', 'webpack-hot-middleware/client?reload=true']
   },
   // The mode property indicates webpack which built-in optimization to use when creating the bundles
   mode: 'development',
@@ -58,16 +59,16 @@ module.exports = {
         test: /\.html$/,
         use: [
           // The file-loader indicates webpack the name of the html files and inject them in the dist directory
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].html'
-            }
-          },
+          // {
+          //   loader: 'file-loader',
+          //   options: {
+          //     name: '[name].html'
+          //   }
+          // },
           // The extract-loader indicates webpack to extract html files and bundle them separately
-          {
-            loader: 'extract-loader'
-          },
+          // {
+          //   loader: 'extract-loader'
+          // },
           // The html-loader indicates webpack how to lint html files
           {
             loader: 'html-loader',
@@ -100,5 +101,10 @@ module.exports = {
       }
     ]
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()]
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new htmlWebpackPlugin({
+      template: './src/index.html'
+    })
+  ]
 }
