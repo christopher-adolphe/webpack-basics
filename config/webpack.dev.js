@@ -1,9 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   // The entry property indicates webpack which module webpack should use to begin building out its internal dependency graph
   entry: {
-    main: ['./src/main.js']
+    main: ['./src/main.js', 'webpack-hot-middleware/client']
   },
   // The mode property indicates webpack which built-in optimization to use when creating the bundles
   mode: 'development',
@@ -17,7 +18,12 @@ module.exports = {
   devServer: {
     contentBase: 'dist',
     // The overlay property enables webpack server to output errors directly on the webpage it is serving
-    overlay: true
+    overlay: true,
+    // The hot property enables webpack server to use hot module replacement
+    hot: true,
+    stats: {
+      colors: true
+    }
   },
   // The module property indicates webpack the set of rules to apply when processing other types of files and which loaders to use in order to process them
   module: {
@@ -93,5 +99,6 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [new webpack.HotModuleReplacementPlugin()]
 }
