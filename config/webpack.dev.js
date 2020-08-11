@@ -26,6 +26,7 @@ module.exports = {
       colors: true
     }
   },
+  devtool: 'source-map',
   // The module property indicates webpack the set of rules to apply when processing other types of files and which loaders to use in order to process them
   module: {
     rules: [

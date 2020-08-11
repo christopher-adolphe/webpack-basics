@@ -10,3 +10,4 @@ var hello = async (args) => {
 }
 
 hello({a: '1st param', b: '2nd param'});
+debugger;
