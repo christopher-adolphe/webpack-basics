@@ -20,17 +20,25 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "css-loader": "^4.2.1",
     "express": "^4.17.1",
     "extract-loader": "^5.1.0",
     "file-loader": "^6.0.0",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-dev-server": "^3.11.0",
     "webpack-hot-middleware": "^2.25.0"
+  },
+  "babel": {
+    "presets": [
+      "babel-preset-react"
+    ]
   }
 }

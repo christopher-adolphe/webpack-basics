@@ -1,6 +1,8 @@
 require('babel-runtime/regenerator');
+require('babel-register');
 require('./main.css');
 require('./index.html');
+require('./app');
 
 var hello = async (args) => {
   const {a, b} = args;

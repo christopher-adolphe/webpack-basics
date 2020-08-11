@@ -6,7 +6,8 @@
         "targets": ["last 2 versions"],
         "debug": true
       }
-    ]
+    ],
+    "babel-preset-react"
   ],
   "plugins": ["transform-runtime"]
 }
