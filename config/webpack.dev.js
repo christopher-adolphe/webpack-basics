@@ -99,13 +99,33 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.pug$/,
+        use: [
+          {
+            loader: 'pug-loader'
+          }
+        ]
+      },
+      {
+        test: /\.hbs$/,
+        use: [
+          {
+            loader: 'handlebars-loader',
+            query: {
+              inlineRequires: '/images/'
+            }
+          }
+        ]
       }
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new htmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.hbs',
+      title: 'Webpack beyond the basics!'
     })
   ]
 }
