@@ -1,5 +1,5 @@
 require('babel-runtime/regenerator');
-require('./main.css');
+require('./main.styl');
 require('./index.html');
 
 var hello = async (args) => {

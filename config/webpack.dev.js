@@ -56,6 +56,66 @@ module.exports = {
         ]
       },
       {
+        // The test property takes a regular expression which indicates which type of file/files should be transformed
+        test: /\.sass$/,
+        // The use property indicates which loader/loaders should be used to do the transforming
+        // Here the loaders will be applied in reverse order: The css-loader will be applied then the style-loader
+        use: [
+          // Indicates webpack to inject the style into the html file
+          {
+            loader: 'style-loader'
+          },
+          // Indicates webpack how to lint css files
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      },
+      {
+        // The test property takes a regular expression which indicates which type of file/files should be transformed
+        test: /\.styl$/,
+        // The use property indicates which loader/loaders should be used to do the transforming
+        // Here the loaders will be applied in reverse order: The css-loader will be applied then the style-loader
+        use: [
+          // Indicates webpack to inject the style into the html file
+          {
+            loader: 'style-loader'
+          },
+          // Indicates webpack how to lint css files
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader'
+          },
+          {
+            loader: 'stylus-loader'
+          }
+        ]
+      },
+      {
+        // The test property takes a regular expression which indicates which type of file/files should be transformed
+        test: /\.less$/,
+        // The use property indicates which loader/loaders should be used to do the transforming
+        // Here the loaders will be applied in reverse order: The css-loader will be applied then the style-loader
+        use: [
+          // Indicates webpack to inject the style into the html file
+          {
+            loader: 'style-loader'
+          },
+          // Indicates webpack how to lint css files
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'less-loader'
+          }
+        ]
+      },
+      {
         // Test to transform html files
         test: /\.html$/,
         use: [
