@@ -5,7 +5,8 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   // The entry property indicates webpack which module webpack should use to begin building out its internal dependency graph
   entry: {
-    main: ['./src/main.js', 'webpack-hot-middleware/client?reload=true']
+    main: ['./src/main.js', 'webpack-hot-middleware/client?reload=true'],
+    ts: ['./src/main.ts']
   },
   // The mode property indicates webpack which built-in optimization to use when creating the bundles
   mode: 'development',
@@ -35,6 +36,15 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader'
+          }
+        ],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.ts$/,
+        use: [
+          {
+            loader: 'awesome-typescript-loader'
           }
         ],
         exclude: /node_modules/
