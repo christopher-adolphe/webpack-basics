@@ -51,7 +51,10 @@ module.exports = {
           },
           // Indicates webpack how to lint css files
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
+            query: {
+              modules: true
+            }
           }
         ]
       },
