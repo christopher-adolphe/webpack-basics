@@ -1,11 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   // The entry property indicates webpack which module webpack should use to begin building out its internal dependency graph
   entry: {
     main: ['./src/main.js', 'webpack-hot-middleware/client?reload=true']
+  },
+  resolve: {
+    alias: {
+      vue$: 'vue/dist/vue.esm.js'
+    }
   },
   // The mode property indicates webpack which built-in optimization to use when creating the bundles
   mode: 'development',
@@ -30,6 +36,14 @@ module.exports = {
   // The module property indicates webpack the set of rules to apply when processing other types of files and which loaders to use in order to process them
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        use: [
+          {
+            loader: 'vue-loader'
+          }
+        ]
+      },
       {
         test: /\.js$/,
         use: [
@@ -103,6 +117,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new VueLoaderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new htmlWebpackPlugin({
       template: './src/index.html'
